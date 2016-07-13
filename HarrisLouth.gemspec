@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "bindata"
-  spec.add_dependency "nokogiri"
+  spec.add_dependency "nokogiri", github: "sparklemotion/nokogiri", branch: "libxml2-2.9.1"
   spec.add_dependency "happymapper"
   spec.add_dependency "json"
 
