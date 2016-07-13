@@ -75,7 +75,7 @@ module HarrisLouth
 	def self.create_row(hash)
 		type=TYPE
 
-		hash.merge!({:type=>TYPE}) if hash[:type] == nil 
+		hash.merge!({:type_=>TYPE}) if hash[:type_] == nil 
 
 		#ID LOUTH SETTING 
 		# if id it's more than 8 chars event type must setted to 1
@@ -88,13 +88,13 @@ module HarrisLouth
 		if(hash[:id]!=nil)
 			louth 	=	hash[:id]
 			if(louth.size>IDLOUTHLEN)
-				type 				=	1
+				type_ 				=	1
 				louth				= 	louth[0..IDLOUTHMAX]
 				id 					=	louth[0..(IDLOUTHLEN-1)]
 				extended_id 		= 	louth[IDLOUTHLEN..louth.size]
 				extended_id_len		=	louth.size-IDLOUTHLEN
 
-				hash.merge!({:type=>type,:id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
+				hash.merge!({:type_=>type_,:id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
 			end
 		end
 		#
@@ -109,7 +109,7 @@ module HarrisLouth
 				extended_title 		= 	title[TITLELEN..title.size]
 				extended_title_len	=	title.size-TITLELEN
 
-				hash.merge!({:type=>type,:title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
+				hash.merge!({:type_=>type_,:title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
 			end
 		end
 
@@ -191,7 +191,7 @@ module HarrisLouth
 
 
 		    line = {
-		    	:type=>1,
+		    	:type_=>1,
 		    	:id=>o.media_id,
 		    	:onair_tc=>onair_time,
 		    	:som=>som_clip,
@@ -317,7 +317,7 @@ module HarrisLouth
 
 					 
 
-		  			  int8				:type, :initial_value=>0
+		  			  int8				:type_, :initial_value=>0
 	 
 		 			  #Extended Event Part
 					  bit16				:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
@@ -399,7 +399,7 @@ module HarrisLouth
 		# Private: check if row is extended
 		#
 		def is_Ext?
-			if type==1		 
+			if type_==1		 
 				return true
 			else
 				return false
@@ -409,7 +409,7 @@ module HarrisLouth
 		# Private: check if id is ext
 		#		
 		def ext_id_exist?
-			if type==1 && extended_id_len>0		 
+			if type_==1 && extended_id_len>0		 
 				return true
 			else
 				return false
@@ -419,7 +419,7 @@ module HarrisLouth
 		# Private: check if title is extended
 		#
 		def ext_title_exist?
-			if type==1 && extended_title_len>0			 
+			if type_==1 && extended_title_len>0			 
 				return true
 			else
 				return false
