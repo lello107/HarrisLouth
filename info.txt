@@ -1,3 +1,8 @@
+# NOKOGIRI
+# apt-get install libxslt-dev libxml2-dev -y && export NOKOGIRI_USE_SYSTEM_LIBRARIES=1 && gem install --verbose nokogiri
+
+
+
 # STANDARD PLAYLIST FORMAT
 # The standard playlist (log) file format is a file of fixed length records of 104 bytes.
 # All data fields are left justified. When an ASCII field is partially filled, the unused bytes should be filled with spaces (20H).

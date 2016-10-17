@@ -73,7 +73,7 @@ module HarrisLouth
 	# Returns the modified Hash.
 	#
 	def self.create_row(hash)
-		type=TYPE
+		type_=TYPE
 
 		hash.merge!({:type_=>TYPE}) if hash[:type_] == nil 
 
@@ -103,7 +103,7 @@ module HarrisLouth
 		if(hash[:title]!=nil)
 			title 	=	sanitize(hash[:title])
 			if(title.size>TITLELEN)
-				type 				=	1
+				type_ 				=	1
 				title 				= 	title[0..TITLEMAX]
 				title_new			=	title[0..(TITLELEN-1)]
 				extended_title 		= 	title[TITLELEN..title.size]
@@ -230,10 +230,13 @@ module HarrisLouth
 				arr.push(hash)
 			end
 
+			puts "TO JSON: TRUE"
 		 
 			return File.open(file_lst_path,'w') {|f| f.write(arr.to_json) }
 		else
 			File.open(file_lst_path,'wb') {|f| a.write(f) }
+
+			puts "TO JSON: FALSE"
 	 	end
 	  
  
@@ -241,7 +244,7 @@ module HarrisLouth
 	end
 
   def self.sanitize(stringa)
-  	return stringa.gsub(/\s|”|'|\|"/, 32.chr).gsub(/–/, "-")
+  	return stringa.gsub(/\s|”|'|‘|’|\|"/, 32.chr).gsub(/–/, "-").gsub(/‘|’/,'\'')
   	#string.gsub! /"/, '|'
     #return stringa.gsub!(/#{255.chr}/,"")
     #return stringa
@@ -320,7 +323,8 @@ module HarrisLouth
 		  			  int8				:type_, :initial_value=>0
 	 
 		 			  #Extended Event Part
-					  bit16				:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
+					  #bit16				:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
+					  int16le			:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
 					  int8				:old_type, :initial_value=>0, :onlyif => :is_Ext?
 					  #string			:reconcile_key, :read_length=>8, :initial_value=>empty_text
 					  string			:reconcile_key,:length => 8,  :pad_byte=>null_chr
