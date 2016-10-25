@@ -320,12 +320,12 @@ module HarrisLouth
 
 					 
 
-		  			  int8le			:type_, :initial_value=>0
+		  			  uint8le			:type_, :initial_value=>0
 	 
 		 			  #Extended Event Part
 					  #bit16				:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
 					  int16le			:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
-					  int8le				:old_type, :initial_value=>0, :onlyif => :is_Ext?
+					  uint8le				:old_type, :initial_value=>0, :onlyif => :is_Ext?
 					  #string			:reconcile_key, :read_length=>8, :initial_value=>empty_text
 					  string			:reconcile_key,:length => 8,  :pad_byte=>null_chr
 			 
