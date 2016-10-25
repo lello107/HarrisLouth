@@ -365,8 +365,8 @@ module HarrisLouth
 
 					  uint8le				:qualifier1, :initial_value=>0
 					  uint8le				:qualifier2, :initial_value=>0
-					  uint8le				:qualifier3, :initial_value=>0u
-u
+					  uint8le				:qualifier3, :initial_value=>0
+
 					  uint16le			:date_on_air, :initial_value=>0
 					  uint16le			:event_control, :initial_value=>7
 					  uint16le			:status, :initial_value=>0
