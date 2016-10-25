@@ -86,17 +86,20 @@ module HarrisLouth
 		# => the same operation must done for TITLE 
 		#
 		if(hash[:id]!=nil)
-			louth 		=	hash[:id]
-			old_type 	=	hash[:type_]
+			louth 			=	hash[:id]
+			old_type 		=	hash[:type_]
+			extended_type	=   hash[:type_]
+
 			if(louth.size>IDLOUTHLEN)
 				type_ 				=	1
 				old_type			=   old_type
+				extended_type		=   extended_type
 				louth				= 	louth[0..IDLOUTHMAX]
 				id 					=	louth[0..(IDLOUTHLEN-1)]
 				extended_id 		= 	louth[IDLOUTHLEN..louth.size]
 				extended_id_len		=	louth.size-IDLOUTHLEN
 
-				hash.merge!({:type_=>type_, :old_type=> old_type, :id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
+				hash.merge!({:type_=>type_, :extended_type=>extended_type, :old_type=> old_type, :id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
 			end
 		end
 		#
@@ -113,7 +116,7 @@ module HarrisLouth
 				extended_title 		= 	title[TITLELEN..title.size]
 				extended_title_len	=	title.size-TITLELEN
 
-				hash.merge!({:type_=>type_, :old_type=> old_type, :title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
+				hash.merge!({:type_=>type_, :extended_type=>extended_type, :old_type=> old_type, :title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
 			end
 		end
 
