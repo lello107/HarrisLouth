@@ -320,19 +320,19 @@ module HarrisLouth
 
 					 
 
-		  			  int8				:type_, :initial_value=>0
+		  			  int8le			:type_, :initial_value=>0
 	 
 		 			  #Extended Event Part
 					  #bit16				:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
 					  int16le			:extended_type, :read_length=>2, :initial_value=>0, :onlyif => :is_Ext?
-					  int8				:old_type, :initial_value=>0, :onlyif => :is_Ext?
+					  int8le				:old_type, :initial_value=>0, :onlyif => :is_Ext?
 					  #string			:reconcile_key, :read_length=>8, :initial_value=>empty_text
 					  string			:reconcile_key,:length => 8,  :pad_byte=>null_chr
 			 
 		   			  #common part_num
-					  int8				:effect1, :initial_value=>0
-					  int8				:effect2, :initial_value=>0
-					  int8				:effect3, :initial_value=>0
+					  int8le				:effect1, :initial_value=>0
+					  int8le				:effect2, :initial_value=>0
+					  int8le				:effect3, :initial_value=>0
 					  #array				:onair_tc, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:onair_tc, :length=>4
 
@@ -349,19 +349,19 @@ module HarrisLouth
 					  #array				:dur, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:dur, :length=>4
 
-					  int8				:channel, :initial_value=>0
-					  int8				:qualifier4, :initial_value=>0
+					  int8le				:channel, :initial_value=>0
+					  int8le				:qualifier4, :initial_value=>0
 					  Bcd				:segment, :length=>1
 
-					  int8				:devmajor, :initial_value=>0
-					  int8				:devmin, :initial_value=>0
+					  int8le				:devmajor, :initial_value=>0
+					  int8le				:devmin, :initial_value=>0
 					  
-					  int8				:binhigh, :initial_value=>0
-					  int8				:binlow, :initial_value=>0
+					  int8le				:binhigh, :initial_value=>0
+					  int8le				:binlow, :initial_value=>0
 
-					  int8				:qualifier1, :initial_value=>0
-					  int8				:qualifier2, :initial_value=>0
-					  int8				:qualifier3, :initial_value=>0
+					  int8le				:qualifier1, :initial_value=>0
+					  int8le				:qualifier2, :initial_value=>0
+					  int8le				:qualifier3, :initial_value=>0
 
 					  int16le			:date_on_air, :initial_value=>0
 					  int16le			:event_control, :initial_value=>7
@@ -385,10 +385,10 @@ module HarrisLouth
 					  #array				:b_som, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:b_som, :length=>4
 
-					  int8				:reserved, :initial_value=>0 #fillwith 0 always
-					  int8 				:backup_dev_maj, :initial_value=>0
-					  int8				:backup_dev_min, :initial_value=>0
-					  int8				:reserved2, :initial_value=>0
+					  int8le				:reserved, :initial_value=>0 #fillwith 0 always
+					  int8le 				:backup_dev_maj, :initial_value=>0
+					  int8le				:backup_dev_min, :initial_value=>0
+					  int8le				:reserved2, :initial_value=>0
 
 					  #Extended part of title
 					  uint16le 			:extended_id_len,:value => lambda { extended_id.length },  :onlyif => :is_Ext?
