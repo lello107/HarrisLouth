@@ -98,7 +98,7 @@ module HarrisLouth
 				extended_id_len		=	louth.size-IDLOUTHLEN
 
 				hash.merge!({:type_=>type_, :id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
-				if (old_type !== 1 or old_type !== 0)
+				if (old_type != 1 or old_type != 0)
 					hash.merge!({ :extended_type=>old_type, :old_type=> old_type})
 				end
 			end
@@ -119,7 +119,7 @@ module HarrisLouth
 				extended_title_len	=	title.size-TITLELEN
 
 				hash.merge!({:type_=>type_, :title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
-				if (old_type !== 1 or old_type !== 0)
+				if (old_type != 1 or old_type != 0)
 					hash.merge!({ :extended_type=>old_type, :old_type=> old_type})
 				end
 			end
