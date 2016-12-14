@@ -144,7 +144,7 @@ module HarrisLouth
 	# Returns the modified Hash.
 	#
 	def self.read_lst(file_lst_path,options={:json=>false})
-		f = File.open(file_lst_path,"rb")
+		f = File.open(file_lst_path,'r:windows-1251:utf-8')
 		if(options[:json])
 			return Louthinterface.read(f).to_json
 		else
