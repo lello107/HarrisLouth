@@ -410,9 +410,9 @@ module HarrisLouth
 
 					  #Extended part of title
 					  uint16le 			:extended_id_len,:value => lambda { extended_id.length },  :onlyif => :is_Ext?
-					  string			:extended_id, :read_length => :extended_id_len, :onlyif => :ext_id_exist?
+					  UTF8String			:extended_id, :read_length => :extended_id_len, :onlyif => :ext_id_exist?
 					  uint16le			:extended_title_len, :value => lambda { extended_title.length }, :onlyif => :is_Ext?
-					  string			:extended_title, :read_length => :extended_title_len, :onlyif => :ext_title_exist?
+					  UTF8String			:extended_title, :read_length => :extended_title_len, :onlyif => :ext_title_exist?
 			
 					  virtual			:louth_id, 		:value=>lambda{ id + extended_id}
 					  virtual			:louth_title, 	:value=>lambda{ title + extended_title}
