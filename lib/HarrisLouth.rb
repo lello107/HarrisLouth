@@ -355,11 +355,11 @@ module HarrisLouth
 					  BcdTimecode		:onair_tc, :length=>4
 
 
-					  UTF8String			:id, :length => 8,  :pad_byte=>empty_chr#:initial_value=>empty_text,
+					  string			:id, :length => 8,  :pad_byte=>empty_chr#:initial_value=>empty_text,
 
 					  #string			:id, :pad_byte=>empty_chr, :value=> lambda { louth_id[0..7].ljust() }
 					  
-					  UTF8String			:title, :length => 16,:pad_byte=>empty_chr# :initial_value=>empty_text, 
+					  string			:title, :length => 16,:pad_byte=>empty_chr# :initial_value=>empty_text, 
 					  #BcdTimecode		:som, :length=>4
 					  #array				:som, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:som, :length=>4
@@ -410,9 +410,9 @@ module HarrisLouth
 
 					  #Extended part of title
 					  uint16le 			:extended_id_len,:value => lambda { extended_id.length },  :onlyif => :is_Ext?
-					  UTF8String			:extended_id, :read_length => :extended_id_len, :onlyif => :ext_id_exist?
+					  string			:extended_id, :read_length => :extended_id_len, :onlyif => :ext_id_exist?
 					  uint16le			:extended_title_len, :value => lambda { extended_title.length }, :onlyif => :is_Ext?
-					  UTF8String			:extended_title, :read_length => :extended_title_len, :onlyif => :ext_title_exist?
+					  string			:extended_title, :read_length => :extended_title_len, :onlyif => :ext_title_exist?
 			
 					  virtual			:louth_id, 		:value=>lambda{ id + extended_id}
 					  virtual			:louth_title, 	:value=>lambda{ title + extended_title}
