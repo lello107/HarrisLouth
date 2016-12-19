@@ -318,6 +318,12 @@ module HarrisLouth
 
 	end
 
+	class UTF8String < BinData::String
+	  def snapshot
+	    super.force_encoding('UTF-8')
+	  end
+	end
+
 	# Private: Harris Louth row structure based on Harris documentation 
 	# 
 	#
@@ -349,11 +355,11 @@ module HarrisLouth
 					  BcdTimecode		:onair_tc, :length=>4
 
 
-					  string			:id, :length => 8,  :pad_byte=>empty_chr#:initial_value=>empty_text,
+					  UTF8String			:id, :length => 8,  :pad_byte=>empty_chr#:initial_value=>empty_text,
 
 					  #string			:id, :pad_byte=>empty_chr, :value=> lambda { louth_id[0..7].ljust() }
 					  
-					  string			:title, :length => 16,:pad_byte=>empty_chr# :initial_value=>empty_text, 
+					  UTF8String			:title, :length => 16,:pad_byte=>empty_chr# :initial_value=>empty_text, 
 					  #BcdTimecode		:som, :length=>4
 					  #array				:som, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:som, :length=>4
@@ -457,6 +463,8 @@ module HarrisLouth
 		array :rows, :type=> LouthRowEasy, read_until: :eof
 
 	end
+
+
 
 
 
