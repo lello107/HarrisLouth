@@ -126,6 +126,8 @@ module HarrisLouth
 		end
 
 
+
+
 		return hash
 
 	end
@@ -256,7 +258,7 @@ module HarrisLouth
 	end
 
   def self.sanitize(stringa)
-  	return stringa.gsub(/\s|”|'|‘|’|\|"/, 32.chr).gsub(/–/, "-").gsub(/‘|’/,'\'')
+  	return stringa#.gsub(/\s|”|'|‘|’|\|"/, 32.chr)#.gsub(/–/, "-")#.gsub(/‘|’/, '\'')
   	#string.gsub! /"/, '|'
     #return stringa.gsub!(/#{255.chr}/,"")
     #return stringa
