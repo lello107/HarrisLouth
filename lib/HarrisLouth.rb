@@ -98,7 +98,7 @@ module HarrisLouth
 				extended_id_len		=	louth.size-IDLOUTHLEN
 
 				hash.merge!({:type_=>type_, :id=>id,:extended_id=>extended_id,:extended_id_len=>extended_id_len})
-				if (old_type == 160 || old_type == 224)
+				if (old_type == 160 || old_type == 224 || old_type == 128)
 					hash.merge!({ :extended_type=>old_type, :old_type=> old_type})
 				end
 			end
@@ -369,19 +369,19 @@ module HarrisLouth
 					  #array				:dur, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:dur, :length=>4
 
-					  uint8le				:channel, :initial_value=>0
-					  uint8le				:qualifier4, :initial_value=>0
+					  uint8le			:channel, :initial_value=>0
+					  uint8le			:qualifier4, :initial_value=>0
 					  Bcd				:segment, :length=>1
 
-					  uint8le				:devmajor, :initial_value=>0
-					  uint8le				:devmin, :initial_value=>0
+					  uint8le			:devmajor, :initial_value=>0
+					  uint8le			:devmin, :initial_value=>0
 					  
-					  uint8le				:binhigh, :initial_value=>0
-					  uint8le				:binlow, :initial_value=>0
+					  uint8le			:binhigh, :initial_value=>0
+					  uint8le			:binlow, :initial_value=>0
 
-					  uint8le				:qualifier1, :initial_value=>0
-					  uint8le				:qualifier2, :initial_value=>0
-					  uint8le				:qualifier3, :initial_value=>0
+					  uint8le			:qualifier1, :initial_value=>0
+					  uint8le			:qualifier2, :initial_value=>0
+					  uint8le			:qualifier3, :initial_value=>0
 
 					  uint16le			:date_on_air, :initial_value=>0
 					  uint16le			:event_control, :initial_value=>7
@@ -405,10 +405,10 @@ module HarrisLouth
 					  #array				:b_som, :type=>BcdTimecode2, :initial_length=>4
 					  BcdTimecode		:b_som, :length=>4
 
-					  uint8le				:reserved, :initial_value=>0 #fillwith 0 always
-					  uint8le 				:backup_dev_maj, :initial_value=>0
-					  uint8le				:backup_dev_min, :initial_value=>0
-					  uint8le				:reserved2, :initial_value=>0
+					  uint8le			:reserved, :initial_value=>0 #fillwith 0 always
+					  uint8le 			:backup_dev_maj, :initial_value=>0
+					  uint8le			:backup_dev_min, :initial_value=>0
+					  uint8le			:reserved2, :initial_value=>0
 
 					  #Extended part of title
 					  uint16le 			:extended_id_len,:value => lambda { extended_id.length },  :onlyif => :is_Ext?
