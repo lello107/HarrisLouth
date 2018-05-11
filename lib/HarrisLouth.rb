@@ -119,7 +119,7 @@ module HarrisLouth
 				extended_title_len	=	title.size-TITLELEN
 
 				hash.merge!({:type_=>type_, :title=>title_new,:extended_title=>extended_title,:extended_title_len=>extended_title_len})
-				if (old_type == 160 || old_type == 224)
+				if (old_type == 160 || old_type == 224 || old_type == 128)
 					hash.merge!({ :extended_type=>old_type, :old_type=> old_type})
 				end
 			end
